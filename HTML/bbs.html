@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSV-N</title>
+
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    .table1 {
+        text-align: center;
+        border:3px solid black;
+    }
+    .table2 {
+        border:3px solid black;
+        padding:10px
+    }
+    
+    </style>
+</head>
+
+<body style="margin:50px" background="data:image/gif;base64,R0lGODlhPAA8AJEAANzAptCznMWtmbOekiH5BAQUAP8ALAAAAAA8ADwAAAL/nI+py+0YnpzUCRGyDnjzC4bipXWeBgBnKaRuNgpDmKll4Oa6jvN1ihNFLCJEa4WDeWIjgOmzAX1InOGhukxJe5kBVChLopwmgPcyw8hmwC11YBsOhVjOK5neeGGdq9ZUBJUWRhU11uLEpsfSZdBDwjQV0RFWc6Li1dZyoVVlcoCoBsk0ShN1RPby9KVm9SgVGanEh2HzstfDVnhwBznDMUi6Uhu34VLowQtUEmww8ru62pMCZ+tsA+ioCUJWSdo6RaxyV6PtXOVHJgkCFz6yVOWUM0VtkEir7XQjdYYmSzvtxzhsJKAByxSnVIRJ336FG/hD3CJP9pbBYgcwRBpc/8bI2fnYQR+MitigYaSlUdoYS4XaRNmIUBK+byqn7ZhHjGWimGocQqlzCUU5aM7QgHpwZFAwGUybzqgAVcGfNVEdzBuzbEUORDyW3bxpLMw8dYUIcc0qRoOjjh62TkszsN6sUn/qFJMzrFJatSSAYOJ44giXjoiA0nGXsnCudjfi3NWK5CLDZzX6TrrbCahWGoLfIPb1g48ueEhuoET2E6XS0GYuG3pUOrLk0884qZBhpsVGSj4js4C0RBihNl5MBos9CyUjd3xEc9bNeJClzcOWewPjrxbL6DWnnxL1ZMvvIi0bkTkOA+3E5r+/u7myBI4/rYBFav4YWKZRwSy6tf/CtpByyVUXGBUh2FKCDbjcZl9bsQECj4ELCoVbcv6FJgZ/SliECxP2CERIWjsIdFc0irlyHzpwLHDQUjRld04RCVC1AI0yOqPAi+LpiBpJX/2oQ0hADvlVcLPF0EiAnTTk0EXasHPbczEopUw3/Xii1h7NfJhHhsC5xw58UUrzSVl9YMARIAYCFA4CW+kVTXIpSacmKS5SNc1zknQZJlPSJQTeB/34h6NHA7525hrL7cPORYEg9JiRkdhzWHs0sYHQgSM9qEc/RmX0DhOtbZMlWYFg1Od4l9KQaYqiLVrKOaoiOVlxobAXHG1uMHXKZ3aKFWmuBpYSqodTNlqNJgUpircnsWBmd6qfXMCC3EiiZASqKVMWNxhyJuKaWh1SOsqterI5apkUBQAAOw==">
+    <div class="table1" style="background-color: rgb(188, 255, 188);">
+        <h1>{{ BBS_Name }}</h1>
+        <p>{{ BBS_Description }}</p>
+        <hr>
+        <a href="/">スタートページ&掲示板リスト</a>
+    </div><br>
+    <div class="table2" style="background-color: rgb(188, 255, 188);">
+        <h3>掲示板リスト</h3>
+        <hr size="5" color="#000000" noshade>
+        <p>{{ ThreadList }}</p>
+    </div><br>
+    <div class="table2" style="background-color: rgb(188, 255, 188);">
+        <h3>スレ立て</h3>
+        <hr size="5" color="#000000" noshade>
+        スレタイ:<input id="Title" style="width: 90%;"><br>
+        お名前:<input id="Name"><br>
+        <textarea id="Message" style="width:100%;height: 235px;"></textarea>
+        <button onclick="ThreadMake()" style="width:100%;height: 112px;"><h1>立てる</h1></button>
+    </div>
+</body>
+
+<script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    var sock = io();
+    function ThreadMake(){
+        var Title = document.getElementById("Title").value
+        var Name = document.getElementById("Name").value
+        var Message = document.getElementById("Message").value
+        sock.emit("Post_Thread",{"Title":Title,"Name":Name,"Message":Message,"BBS":"{{ BBS }}"});
+        location.reload()
+    }
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSV-N</title>
+
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #e4e4e4;">
+    <div style="margin:10px">
+        <h1 style="color:red">{{ Thread_Title }}</h1>
+        <a href="/bbs/{{ BBS }}">掲示板</a>　
+        <a href="/">OSV-N</a>　
+        <a href="/FileUP" target="_blank">ファイルアップロード</a>
+        <hr>
+        <span id='Dat'>{{ Thread_Dat }}</span>
+        <hr>
+        <a href="/bbs/{{ BBS }}">掲示板</a>　
+        <a href="/">OSV-N</a>　
+        <a href="/FileUP" target="_blank">ファイルアップロード</a>
+
+        <hr>
+        お名前:<input id="Name" value="{{ HN }}"><br>
+        <textarea id="Message" style="width:100%;height: 235px;"></textarea>
+        <button onclick="Post()" style="width:100%;height: 112px;" id="Kakikomi"><h3>書き込み</h3></button><hr>
+        新着音<input type="checkbox" id="audioon">
+
+    </div>
+</body>
+<audio src="https://soundeffect-lab.info/sound/button/mp3/decision47.mp3" id="sintyaku"></audio>
+<script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    var sock = io();
+    function Post(){
+        var Name = document.getElementById("Name").value
+        var Message = document.getElementById("Message").value
+        sock.emit("Post",{"Name":Name,"Message":Message,"BBS":"{{ BBS }}","Thread":"{{ Thread }}"});
+        document.getElementById("Message").value=""
+
+    }
+
+    sock.on("Update-{{ BBS }}-{{ Thread }}",function update(data) {
+        var dat = document.getElementById("Dat")
+        dat.innerHTML = data
+        if(document.getElementById("audioon").checked){
+
+            document.getElementById("sintyaku").play()
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSV-N</title>
+
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <h1>OSV-N掲示板</h1>
+    <p>シンプルで使いやすい掲示板です。</p>
+    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+        aria-controls="offcanvasExample">
+        掲示板リスト
+    </a>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 20%;">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">掲示板リスト</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <hr noshade size="2">
+                <a href="/bbs/LiveJupiter/">実況J</a><br>
+                <a href="/bbs/LiveGalileo/">実況G</a>
+                <hr noshade size="2">
+                <a href="/bbs/Satoru/">おんJ</a>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</html>
