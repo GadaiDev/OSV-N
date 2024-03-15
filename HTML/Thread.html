@@ -7,20 +7,30 @@
     <title>OSV-N</title>
 
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .news{
+            transition: all 0.3s;
+            text-align: left;
+            color:white
+        }
+    </style>
 </head>
 
 <body style="background-color: #e4e4e4;">
     <div style="margin:10px">
+        
         <h1 style="color:red">{{ Thread_Title }}</h1>
-        <a href="/bbs/{{ BBS }}">掲示板</a>　
-        <a href="/">OSV-N</a>　
+        <a href="/bbs/{{ BBS }}">掲示板</a>
+        <a href="/">OSV-N</a>
         <a href="/FileUP" target="_blank">ファイルアップロード</a>
+        <a href="/Name-Set" target="_blank">コテ設定</a>        
         <hr>
         <span id='Dat'>{{ Thread_Dat }}</span>
         <hr>
-        <a href="/bbs/{{ BBS }}">掲示板</a>　
-        <a href="/">OSV-N</a>　
+        <a href="/bbs/{{ BBS }}">掲示板</a>
+        <a href="/">OSV-N</a>
         <a href="/FileUP" target="_blank">ファイルアップロード</a>
+        <a href="/Name-Set" target="_blank">コテ設定</a>        
 
         <hr>
         お名前:<input id="Name" value="{{ HN }}"><br>
@@ -29,6 +39,8 @@
         新着音<input type="checkbox" id="audioon">
 
     </div>
+    <span class="btn fixed-bottom news" style="background-color:darkred;border-radius:  0px;" id="News">
+    </span>
 </body>
 <audio src="https://soundeffect-lab.info/sound/button/mp3/decision47.mp3" id="sintyaku"></audio>
 <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -50,6 +62,16 @@
 
             document.getElementById("sintyaku").play()
         }
+        
     })
+
+    sock.on("News",function(message){
+        var news = document.getElementById("News")
+        news.innerText=message
+    })
+
+    function addAnker(num) {
+        document.getElementById("Message").value+=">>"+num+"\n"
+    }
 </script>
 </html>

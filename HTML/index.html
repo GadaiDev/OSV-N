@@ -16,7 +16,13 @@
     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
         aria-controls="offcanvasExample">
         掲示板リスト
-    </a>
+    </a><hr>
+    <form action="/BBSMake" method="post">
+        <button type="submit" class="btn btn-primary">掲示板を作る</button><br>
+        <div class="input-group"><span class="input-group-text" style="background-color: brown; color:white">掲示板名</span><input class="input-group form-control" name="BBS_NAME"></div><br>
+        <div class="input-group"><span class="input-group-text" style="background-color: brown; color:white">掲示板ID</span><input class="input-group form-control" name="BBS_ID"></div><br>
+        <textarea class="input-group-text" name="BBS_DESC" style="width: 100%; height:600px"></textarea>
+    </form>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 20%;">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">掲示板リスト</h5>
@@ -25,11 +31,7 @@
         <div class="offcanvas-body">
             <div>
                 <hr noshade size="2">
-                <a href="/bbs/LiveJupiter/">実況J</a><br>
-                <a href="/bbs/LiveGalileo/">実況G</a>
-                <hr noshade size="2">
-                <a href="/bbs/Satoru/">おんJ</a>
-                
+                {{ BBSLIST }}
             </div>
         </div>
     </div>
