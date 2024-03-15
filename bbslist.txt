@@ -1,0 +1,4 @@
+<a href='bbs/LiveGalileo'>なんG</a><br>
+<a href='bbs/LiveJupiter'>なんJ</a><br>
+<a href='bbs/LiveNeptune'>なんN</a><br>
+<a href='bbs/Satoru'>さとる板</a><br>
