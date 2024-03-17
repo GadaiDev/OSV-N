@@ -4,7 +4,7 @@
 # OSVを運営する方法
 とりあえず箇条書き
  - Python3.10.0を入れる。
- - Flask 3.0.2とFlask 5.3.6を入れる。
+ - Flask 3.0.2とFlask-SocketIO 5.3.6を入れる。
  - Linuxコマンド:「pip install flask flask-socketio」
  - Windowsコマンド:「py -m pip install flask flask-socketio」
  - Macコマンド:Mac触ったことないです。知らない。
