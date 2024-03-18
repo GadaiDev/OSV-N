@@ -25,7 +25,13 @@
         <h1>{{ BBS_Name }}</h1>
         <p>{{ BBS_Description }}</p>
         <hr>
-        <a href="/">スタートページ&掲示板リスト</a>
+        <a href="/">OSV-N</a>
+        <a href="/FileUP" target="_blank">ファイルアップロード</a>
+        <a href="/Name-Set" target="_blank">コテ設定</a>     
+        <hr>
+        <a href="/bbs/{{ BBS }}/">新しい順</a>|
+        <a href="/bbs/{{ BBS }}/?mode=old">古い順</a>|
+        <a href="/bbs/{{ BBS }}/?mode=res">レス数順</a>
     </div><br>
     <div class="table2" style="background-color: rgb(188, 255, 188);">
         <h3>掲示板リスト</h3>

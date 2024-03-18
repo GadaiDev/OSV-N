@@ -20,6 +20,7 @@ def BBS_base(bbs_id,bbs_name, bbs_description, Thread_List):
 
     bbs_ThreadList = []
     a = json_load(f"BBS/{bbs_id}/dat.json")
+    Thread_List.reverse()
     for i in Thread_List:
         Thread_Title = i["Title"]
         Thread_ID = i["ID"]
@@ -36,7 +37,7 @@ def Thread_base(bbs_name, Thread_Name):
     
     json_dat = json_load(f"bbs/{bbs_name}/dat.json")
     thread_title = json_dat[Thread_Name]["Title"]
-    thread_dat = "\n".join(json_dat[Thread_Name]["dat"])
+    thread_dat = "".join(json_dat[Thread_Name]["dat"])
 
     base = fOpen("HTML/Thread.html")
     base = base.replace("{{ Thread_Title }}",thread_title)
@@ -63,8 +64,6 @@ def XSSGuard(text):
     return text.replace(">","≻").replace("<","≺")
 
 
-def count(fname,key):
-    jsons = json_load(fname)
+def count(jsons,key):
     jsons[key]["count"] = str(int(jsons[key]["count"])+1)
-    json_write(jsons,fname)
-    return jsons[key]["count"]
+    return jsons[key]["count"], jsons
