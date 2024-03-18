@@ -11,7 +11,6 @@ app.secret_key = b"secret!"
 sock = SocketIO(app)
 bootstrap.Load_Bootstrap(app)
 idhuriwake = []
-id_ip_dict = {"2001:268:d6b5:528b:506f:eef5:9dda:bbde":"DEbBIxcE"}
 @app.route("/")
 def page_index():
     if not "ID" in list(session.keys()):
